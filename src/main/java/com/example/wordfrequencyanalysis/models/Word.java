@@ -15,6 +15,9 @@ public class Word {
     @Column
     Integer count;
 
+    public Word() {
+    }
+
     public String getWord() {
         return word;
     }
@@ -29,5 +32,9 @@ public class Word {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

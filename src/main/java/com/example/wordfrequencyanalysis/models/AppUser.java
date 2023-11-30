@@ -1,28 +1,29 @@
 package com.example.wordfrequencyanalysis.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
 @Entity
-public class Group {
+public class AppUser {
     @Id
     long id;
 
-    @OneToMany
-    List<User> users;
-
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     List<Word> words;
 
-    public List<User> getUsers() {
-        return users;
+    public AppUser() {
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<Word> getWords() {
