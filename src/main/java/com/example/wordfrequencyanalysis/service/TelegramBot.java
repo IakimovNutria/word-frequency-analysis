@@ -16,6 +16,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Component
@@ -98,6 +100,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         AppUser appUser = findUserById(userId);
         AppGroup appGroup = findGroupById(groupId);
         for (String word : words) {
+            word = formatWord(word);
             boolean isWordFound = false;
             for (Word userWord : appUser.getWords()) {
                 if (userWord.getWord().equals(word)) {
@@ -171,4 +174,23 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+    private static String removeExtraHyphens(String input) {
+        Pattern pattern = Pattern.compile("(\\s|^)-|-(?=\\s|$)");
+        Matcher matcher = pattern.matcher(input);
+        StringBuilder buffer = new StringBuilder(input.length());
+        while (matcher.find()) {
+            matcher.appendReplacement(buffer, "");
+        }
+        matcher.appendTail(buffer);
+        return buffer.toString();
+    }
+
+
+    private String formatWord(String word) {
+        return removeExtraHyphens(word
+                .toLowerCase()
+                .replaceAll("\\d", "")
+                .replaceAll("[^a-zA-Zа-яА-Я\\s-]", "")
+        );
+    }
 }
