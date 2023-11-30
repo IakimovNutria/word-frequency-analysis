@@ -5,13 +5,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class User {
     @Id
-    private long userId;
+    long id;
 
     @OneToMany
-    private List<Word> words;
+    List<Word> words;
+
+    public long getId() {
+        return id;
+    }
+
+    public List<Word> getWords() {
+        return words;
+    }
+
+    public void setWords(List<Word> words) {
+        this.words = words;
+    }
 }
