@@ -1,6 +1,6 @@
 package com.example.wordfrequencyanalysis.config;
 
-import com.example.wordfrequencyanalysis.service.TelegramBot;
+import com.example.wordfrequencyanalysis.controllers.TelegramBot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;

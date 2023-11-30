@@ -12,6 +12,7 @@ public class AppUser {
     @Id
     long id;
 
+    // TODO: разобраться можно ли убрать (fetch = FetchType.EAGER)
     @OneToMany(fetch = FetchType.EAGER)
     List<Word> words;
 

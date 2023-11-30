@@ -1,4 +1,4 @@
-package com.example.wordfrequencyanalysis.service;
+package com.example.wordfrequencyanalysis.controllers;
 
 import com.example.wordfrequencyanalysis.config.BotConfig;
 import com.example.wordfrequencyanalysis.models.AppUser;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+// TODO: разбить на сервисы (обращение к бд, бизнес логика)
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
     final BotConfig config;
